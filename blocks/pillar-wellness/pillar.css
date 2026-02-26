@@ -1,0 +1,47 @@
+/* Pillar block (single item) */
+.imp-pillar-block{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap: 4px;
+}
+
+.imp-pillar-block__icon{
+  width: 56px;
+  height: 56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.imp-pillar-block__icon img{
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display:block;
+}
+
+.imp-pillar-block__label{
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #1b2f4a;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.imp-pillar-block__pct{
+  font-size: 16px;
+  font-weight: 900;
+  color: #1b2f4a;
+  line-height: 1;
+}
+
+@media (max-width: 480px){
+  .imp-pillar-block__icon,
+  .imp-pillar-block__icon img{
+    width: 48px;
+    height: 48px;
+  }
+}

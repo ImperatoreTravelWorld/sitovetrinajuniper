@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "imperatore/tour-map",
+  "title": "Mappa Tour",
+  "category": "widgets",
+  "icon": "location",
+  "description": "Mostra la mappa del tour (Leaflet) con controlli di layout.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "height": {
+      "type": "number",
+      "default": 360
+    },
+    "width": {
+      "type": "string",
+      "default": "100%"
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 18
+    }
+  },
+  "editorScript": "file:./map.js",
+  "style": "file:./map.css"
+}

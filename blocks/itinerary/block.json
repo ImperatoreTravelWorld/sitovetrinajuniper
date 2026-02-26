@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "imperatore/itinerary",
+  "title": "Itinerario (giorno per giorno)",
+  "category": "widgets",
+  "icon": "location-alt",
+  "description": "Crea un itinerario giorno per giorno per i Tour.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "items": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "editorScript": "file:./itinerary.js",
+  "style": "file:./itinerary.css"
+}
