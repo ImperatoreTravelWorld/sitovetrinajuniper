@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "settings": {
+    "layout": {
+      "contentSize": "1200px",
+      "wideSize": "1400px"
+    },
+    "color": {
+      "custom": true,
+      "customGradient": true,
+      "customDuotone": true,
+      "palette": [
+        {
+          "name": "Navy",
+          "slug": "navy",
+          "color": "#113A6C"
+        },
+        {
+          "name": "Navy Dark",
+          "slug": "navy-dark",
+          "color": "#0B3A67"
+        },
+        {
+          "name": "Yellow",
+          "slug": "yellow",
+          "color": "#FBBD01"
+        },
+        {
+          "name": "Yellow Alt",
+          "slug": "yellow-alt",
+          "color": "#F2B705"
+        },
+        {
+          "name": "Light Gray",
+          "slug": "light-gray",
+          "color": "#F3F4F6"
+        },
+        {
+          "name": "Mid Gray",
+          "slug": "mid-gray",
+          "color": "#D1D5DB"
+        },
+        {
+          "name": "Dark",
+          "slug": "dark",
+          "color": "#111827"
+        },
+        {
+          "name": "White",
+          "slug": "white",
+          "color": "#FFFFFF"
+        },
+        {
+          "name": "Trustpilot Green",
+          "slug": "trustpilot-green",
+          "color": "#00B67A"
+        }
+      ]
+    },
+    "typography": {
+      "customFontSize": true,
+      "customLineHeight": true,
+      "fontFamilies": [
+        {
+          "name": "Inter",
+          "slug": "inter",
+          "fontFamily": "'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        },
+        {
+          "name": "Poppins",
+          "slug": "poppins",
+          "fontFamily": "'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        }
+      ]
+    },
+    "appearanceTools": true,
+    "spacing": {
+      "padding": true,
+      "customPadding": true,
+      "units": [
+        "px",
+        "rem",
+        "em",
+        "%",
+        "vw",
+        "vh"
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--inter)"
+    },
+    "color": {
+      "background": "#FFFFFF",
+      "text": "#111827"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--poppins)"
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ]
+}

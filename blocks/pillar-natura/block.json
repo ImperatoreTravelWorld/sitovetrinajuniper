@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "imperatore/pillar-natura",
+  "title": "Highlight: Natura & Outdoors (%)",
+  "category": "widgets",
+  "icon": "leaf",
+  "description": "Mostra l'icona Natura & Outdoors con percentuale.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "percent": { "type": "number", "default": 70 }
+  },
+  "editorScript": "file:./pillar.js",
+  "style": "file:./pillar.css"
+}

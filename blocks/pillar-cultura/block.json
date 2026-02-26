@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "imperatore/pillar-cultura",
+  "title": "Highlight: Cultura (%)",
+  "category": "widgets",
+  "icon": "awards",
+  "description": "Mostra l'icona Cultura con percentuale.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "percent": { "type": "number", "default": 70 }
+  },
+  "editorScript": "file:./pillar.js",
+  "style": "file:./pillar.css"
+}
