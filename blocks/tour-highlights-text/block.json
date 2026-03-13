@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "imperatore/tour-highlights-text",
+  "title": "Tour: Testo Highlights",
+  "category": "widgets",
+  "icon": "tag",
+  "description": "Mostra le etichette della tassonomia Highlights del tour (chip).",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Tour Highlights"
+    },
+    "showTitle": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "editorScript": "file:./highlights.js",
+  "style": "file:./highlights.css",
+  "render": "file:./render.php"
+}

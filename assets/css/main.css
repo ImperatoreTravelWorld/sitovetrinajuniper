@@ -1,0 +1,1727 @@
+/* ---- imp-typography: Travel brand pairing ---- */
+:root{
+  --imp-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  --imp-font-heading: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+}
+body, .wp-site-blocks, .editor-styles-wrapper{
+  font-family: var(--imp-font-body);
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}
+h1,h2,h3,h4,h5,h6,
+.entry-title,
+.wp-block-post-title,
+.kb-advanced-heading-wrapper,
+.imp-tours-hero h1,
+.imp-tour-title,
+.imp-tour-title-card{
+  font-family: var(--imp-font-heading);
+  letter-spacing: -0.02em;
+}
+.imp-nav__link,
+.imp-btn,
+button,
+input,
+select,
+textarea{
+  font-family: var(--imp-font-body);
+}
+
+
+.wp-site-blocks, .wp-block-group{ overflow: visible; }
+/* ---- Header basics ---- */
+.imp-container{
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.imp-header{ position: relative; z-index: 50; }
+.imp-header__inner{ padding-top: 14px; padding-bottom: 14px; }
+.imp-nav__links{ display:flex; gap:22px; align-items:center; }
+.imp-nav__link{ text-decoration:none; font-weight:600; color: #0B2A66; }
+/* ---- Mega menu: full-width yellow band, height = content ---- */
+.imp-mega{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  display: none;
+  background: #F2B401; /* fascione giallo */
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+.imp-mega__inner{ display:flex; align-items:flex-start; }
+.imp-mega__cols{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 34px;
+  width: 100%;
+}
+.imp-mega__col{ min-width: 0; }
+/* Pills */
+.imp-mega__item{
+  display:block;
+  background: #fff;
+  border-radius: 10px;
+  padding: 11px 16px;
+  margin-bottom: 12px;
+  text-decoration:none;
+  font-weight: 500;
+  color: #0B2A66;
+  line-height: 1.15;
+  transition: transform .08s ease-in-out;
+}
+.imp-mega__item:hover{ transform: translateY(-1px); }
+.imp-mega__item.is-active{ font-weight: 700; }
+/* Make hover bold too, like the screenshot */
+.imp-mega__item:hover{ font-weight:700; }
+/* Responsive */
+@media (max-width: 960px){
+  .imp-mega__cols{ grid-template-columns: 1fr; gap: 16px; }
+}
+/* =========================
+   Kadence Mega Menu (CSS-only)
+   =========================
+   IMPORTANT:
+   - In the Kadence “Navigation (Adv)” block add this CSS class:
+       imp-mega-nav
+   - Kadence often applies the class to the SAME element as .wp-block-kadence-navigation.
+     So selectors must work both when .imp-mega-nav is a wrapper OR on the nav block itself.
+*/
+/* scope helper (wrapper OR same element) */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav){
+  position: relative;
+}
+/* Let the dropdown stretch to viewport width */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-menu > .menu-item.menu-item-has-children{
+  position: static !important;
+}
+/* First dropdown level = full-width yellow band */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-menu > .menu-item.menu-item-has-children > .sub-menu.kb-nav-sub-menu{
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 100% !important;
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  background: #f2bf3a !important;
+  padding: 18px 24px !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  z-index: 9999 !important;
+}
+/* Desktop hover open (in addition to Kadence aria-expanded behaviour) */
+@media (hover: hover) and (pointer: fine){
+  :where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-menu > .menu-item.menu-item-has-children:hover > .sub-menu.kb-nav-sub-menu{
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+    align-items: flex-start;
+  }
+}
+/* Pills */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-sub-menu > .menu-item > .kb-link-wrap{
+  background: #fff !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  min-width: 260px;
+  line-height: 1.2;
+}
+/* Link */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-sub-menu > .menu-item > .kb-link-wrap > .kb-nav-link-content{
+  color: #0b2b4b !important;
+  text-decoration: none !important;
+  font-weight: 500;
+}
+/* Hover = bold (like screenshot) */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-sub-menu > .menu-item:hover > .kb-link-wrap > .kb-nav-link-content{
+  font-weight: 700 !important;
+}
+/* Optional “selected” state (if you add .is-active via JS) */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-sub-menu > .menu-item.is-active > .kb-link-wrap > .kb-nav-link-content{
+  font-weight: 700 !important;
+}
+/* Keep deeper levels hidden in CSS-only mode */
+:where(.imp-mega-nav, .wp-block-kadence-navigation.imp-mega-nav) .kb-nav-sub-menu .kb-nav-sub-menu{
+  display: none !important;
+}
+/* IMP: Kadence Mega Menu */
+/* Targeting Kadence markup: ul.kb-navigation > li > ul.sub-menu.kb-nav-sub-menu */
+.kb-navigation {
+  position: relative;
+}
+/* Allow the first dropdown to be full width */
+.kb-navigation > li.menu-item-has-children {
+  position: static !important;
+}
+/* Full width yellow band (1st dropdown under top-level item) */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 100% !important;
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  background: #f2bf3a !important;
+  padding: 18px 24px !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  display: none;
+  flex-wrap: wrap !important;
+  gap: 14px 18px !important;
+  align-items: flex-start !important;
+  z-index: 9999 !important;
+  min-height: 50vh !important; /* at least half screen */
+  overflow: visible !important;
+  transition: min-height 150ms ease;
+}
+/* Show on hover (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .kb-navigation > li.menu-item-has-children:hover > ul.sub-menu.kb-nav-sub-menu {
+    display: flex !important;
+  }
+}
+/* Show when aria-expanded true (Kadence toggle) */
+.kb-navigation > li.menu-item-has-children:has(> .kb-link-wrap > button.kb-nav-dropdown-toggle-btn[aria-expanded="true"]) > ul.sub-menu.kb-nav-sub-menu {
+  display: flex !important;
+}
+/* White pill items inside the yellow band (UPDATED as requested) */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu > li.menu-item > .kb-link-wrap {
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  padding: 0px 14px !important; /* requested */
+  min-width: 260px;
+  line-height: 1.2;
+}
+/* Remove SVG icons inside sub items (all levels within dropdown) */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu svg {
+  display: none !important;
+}
+/* Link style */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu > li.menu-item > .kb-link-wrap > .kb-nav-link-content {
+  color: #0b2b4b !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+/* Bold on hover */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu > li.menu-item:hover > .kb-link-wrap > .kb-nav-link-content {
+  font-weight: 700 !important;
+}
+/* ========= Deeper levels (2nd level onwards) =========
+   Cascading panels to the right.
+   Fix “disappearing submenu” by creating a hover-bridge over the gap. */
+/* Any menu item that has children inside the mega dropdown */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu li.menu-item.menu-item-has-children {
+  position: relative !important;
+}
+/* Nested submenu panel (all deeper levels) */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu ul.sub-menu.kb-nav-sub-menu {
+  position: absolute !important;
+  top: 0 !important;
+  left: 100% !important;
+  margin-left: 18px !important; /* visual gap */
+  background: #f2bf3a !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  display: none !important;
+  z-index: 10000 !important;
+  min-width: 320px;
+}
+/* Hover bridge: prevents losing hover when moving mouse from parent item to submenu */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu ul.sub-menu.kb-nav-sub-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -18px;
+  width: 18px;
+  height: 100%;
+  background: transparent;
+}
+/* Make nested submenu items stack vertically */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu ul.sub-menu.kb-nav-sub-menu > li.menu-item {
+  list-style: none;
+  margin: 0 !important;
+}
+/* Show nested submenu on hover */
+@media (hover: hover) and (pointer: fine) {
+  .kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu li.menu-item.menu-item-has-children:hover > ul.sub-menu.kb-nav-sub-menu {
+    display: block !important;
+  }
+}
+/* Make nested submenu links look like the same white pills */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu ul.sub-menu.kb-nav-sub-menu > li.menu-item > .kb-link-wrap {
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  padding: 0px 14px !important;
+  margin: 0 0 14px 0 !important;
+  min-width: 260px;
+  line-height: 1.2;
+}
+/* Ensure text style for nested levels */
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu ul.sub-menu.kb-nav-sub-menu > li.menu-item > .kb-link-wrap > .kb-nav-link-content {
+  color: #0b2b4b !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+.kb-navigation > li.menu-item-has-children > ul.sub-menu.kb-nav-sub-menu ul.sub-menu.kb-nav-sub-menu > li.menu-item:hover > .kb-link-wrap > .kb-nav-link-content {
+  font-weight: 700 !important;
+}
+/* IMP: End Kadence Mega Menu */
+/* IMP: Tours Listing */
+.imp-tours-page .imp-tours-hero { padding: 28px 0 10px; }
+.imp-tours-page .imp-tours-title {
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #1b2f4a;
+  font-size: clamp(22px, 3vw, 36px);
+}
+/* Layout similar to screen: compact left filter box + centered results */
+.imp-tours-page .imp-tours-wrap{
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 34px;
+  padding: 18px 0 60px;
+  max-width: 980px;
+  margin: 0 auto;
+  align-items: start;
+}
+@media (max-width: 980px){
+  .imp-tours-page .imp-tours-wrap{ grid-template-columns: 1fr; max-width: 720px; padding: 18px 18px 50px; }
+}
+.imp-tours-page .imp-filter-box{
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #fff;
+  padding: 14px 14px 16px;
+}
+.imp-tours-page .imp-filter-head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.imp-tours-page .imp-filter-title{
+  font-weight: 700;
+  font-size: 12px;
+  color: #6a7a8a;
+  letter-spacing: 0.6px;
+}
+.imp-tours-page .imp-filter-reset{
+  font-size: 12px;
+  text-decoration: none;
+  color: #2b66a0;
+}
+.imp-tours-page .imp-filter-group{ margin: 10px 0 14px; }
+.imp-tours-page .imp-filter-group label{ display:block; font-size: 12px; margin-bottom: 6px; color:#2b3a4a; }
+.imp-tours-page .imp-filter-group__head{ font-weight: 700; font-size: 12px; margin: 10px 0 6px; color:#1b2f4a; }
+.imp-tours-page .imp-filter-form input[type="date"]{
+  width: 90%;
+  padding: 8px 10px;
+  border: 1px solid rgba(0,0,0,0.18);
+  border-radius: 2px;
+}
+.imp-tours-page .imp-check{ display:flex; gap: 10px; align-items:center; margin: 8px 0; font-size: 12px; color:#2b3a4a; }
+.imp-tours-page .imp-check input{ transform: translateY(1px); }
+.imp-tours-page .imp-filter-actions{ margin-top: 12px; }
+.imp-tours-page .imp-btn--primary{
+  width: 100%;
+  background:#1b2f4a;
+  color:#fff;
+  border-color:#1b2f4a;
+  padding: 10px 12px;
+  font-size: 12px;
+}
+/* Toolbar row */
+.imp-tours-page .imp-tours-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  margin-bottom: 22px;
+}
+.imp-tours-page .imp-tours-count{ color:#6a7a8a; font-size: 12px; }
+.imp-tours-page .imp-tours-sort{ display:flex; align-items:center; gap: 10px; }
+.imp-tours-page .imp-tours-sort label{ font-size: 12px; color:#6a7a8a; }
+.imp-tours-page .imp-tours-sort select{ padding: 8px 10px; min-width: 200px; }
+/* Cards grid: centered, like the screen */
+.imp-tours-page .imp-tour-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+  justify-content: center;
+}
+@media (max-width: 640px){
+  .imp-tours-page .imp-tour-grid{ grid-template-columns: 1fr; }
+}
+.imp-tours-page .imp-tour-card{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 360px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.imp-tours-page .imp-tour-card__media{
+  position: relative;
+  display: block;
+  aspect-ratio: 4/3; /* closer to screen card */
+  overflow: hidden;
+}
+.imp-tours-page .imp-tour-card__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+.imp-tours-page .imp-tour-card__body{ padding: 12px 14px 14px; display:flex; flex-direction:column; gap: 10px;  flex:1; }
+
+.imp-tours-page .imp-tour-meta{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color:#6a7a8a;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+}
+.imp-tours-page .imp-tour-title-card{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+  /* Fixed title block height to keep CTAs aligned across cards.
+     Max 3 lines with ellipsis.
+  */
+  min-height: calc(1.25em * 3);
+  max-height: calc(1.25em * 3);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.imp-tours-page .imp-tour-title-card a{ text-decoration:none; color:#1b2f4a; }
+
+/* Tour highlights pillars (icons + percent) */
+.imp-tours-page .imp-tour-pillars{
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Bars mode for archive pillars (prevents text overlap) */
+.imp-tours-page .imp-tour-pillars--bars{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar{
+  align-items: stretch;
+  text-align: left;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar__top{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar__icon{
+  width: 26px;
+  height: 26px;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar__icon img{
+  width: 26px;
+  height: 26px;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar__label{
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #1b2f4a;
+  text-transform: uppercase;
+  line-height: 1.1;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar__pct{
+  margin: 0;
+  font-size: 13px;
+  font-weight: 900;
+  color: #1b2f4a;
+  line-height: 1;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar__bar{
+  margin-top: 6px;
+  height: 8px;
+  background: #e8eef6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar__bar-fill{
+  display:block;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+}
+/* Color mapping (match logos) */
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar[data-key="cultura"] .imp-tour-pillar__bar-fill{ background:#f2bf3a; }
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar[data-key="enogastro"] .imp-tour-pillar__bar-fill{ background:#1b4d7a; }
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar[data-key="natura"] .imp-tour-pillar__bar-fill{ background:#1f7a4b; }
+.imp-tours-page .imp-tour-pillars--bars .imp-tour-pillar[data-key="wellness"] .imp-tour-pillar__bar-fill{ background:#e35a2b; }
+
+/* Pillars blocks (single-tour / editor) */
+.imp-pillars-row{
+  display:flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.imp-pillars-row .imp-pillar-block{
+  flex: 1;
+  min-width: 120px;
+}
+.imp-tours-page .imp-tour-pillar{
+  flex: 1;
+  min-width: 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.imp-tours-page .imp-tour-pillar__icon{
+  width: 52px;
+  height: 52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.imp-tours-page .imp-tour-pillar__icon img{
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display:block;
+}
+.imp-tours-page .imp-tour-pillar__label{
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #1b2f4a;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.imp-tours-page .imp-tour-pillar__pct{
+  margin-top: 2px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #1b2f4a;
+  line-height: 1;
+}
+
+@media (max-width: 480px){
+  .imp-tours-page .imp-tour-pillar__icon,
+  .imp-tours-page .imp-tour-pillar__icon img{
+    width: 46px;
+    height: 46px;
+  }
+}
+/* Button like screen (single CTA) */
+.imp-tours-page .imp-tour-actions{ display:flex; flex-direction:column; gap: 10px; margin-top: 6px;  margin-top:auto; }
+
+.imp-tours-page .imp-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 12px 14px;
+  font-weight: 800;
+  text-decoration:none;
+  letter-spacing: .4px;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.imp-tours-page .imp-btn--yellow{
+  background:#f2bf3a;
+  color:#fff;
+  border-color:#f2bf3a;
+}
+.imp-tours-page .imp-btn--outline{
+  background: transparent;
+  color:#1b2f4a;
+  border-color:#1b2f4a;
+}
+.imp-tours-page .imp-pagination{ margin-top: 26px; }
+/* IMP: End Tours Listing */
+/* IMP: Tour Single */
+.imp-tour-single-hero { position: relative; min-height: 360px; overflow:hidden; }
+.imp-tour-single-hero__img { width:100%; height: 420px; object-fit: cover; display:block; }
+.imp-tour-single-hero__overlay { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55)); display:flex; align-items:flex-end; }
+.imp-tour-single-hero__inner { max-width: 1200px; margin: 0 auto; width:100%; padding: 28px 18px; color:#fff; }
+.imp-tour-single-title { margin: 0 0 10px; font-size: clamp(24px, 3vw, 44px); }
+.imp-tour-single-meta { display:flex; gap: 12px; flex-wrap:wrap; font-size: 13px; opacity: .95; }
+.imp-tour-single-cta { margin-top: 16px; display:flex; flex-wrap:wrap; gap: 10px; }
+.imp-tour-single-content .imp-container { max-width: 920px; margin: 0 auto; padding: 34px 18px; }
+/* IMP: End Tour Single */
+/* IMP: Tour Map */
+.imp-tour-map-section { padding: 34px 0; }
+.imp-section-title { margin: 0 0 14px; font-size: 22px; color: #1b2f4a; }
+.imp-tour-map {
+  height: 420px;
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #f7f7f7;
+}
+
+/* When map is wrapped (Gutenberg block), fill the wrapper height */
+.imp-tour-map-wrap .imp-tour-map{
+  height: 100%;
+  width: 100%;
+  border: 0;
+}
+.imp-map-marker__dot{
+  width:30px;height:30px;border-radius:999px;
+  background:#1b4c75;
+  border:3px solid #f2bf3a;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:13px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.imp-map-marker__dot span{ transform: translateY(-1px); }
+/* IMP: End Tour Map */
+/* IMP: Tours Landing */
+.imp-tours-landing-hero{
+  padding: 28px 0 10px;
+}
+.imp-tours-landing-title{
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #1b2f4a;
+  font-size: clamp(22px, 3vw, 36px);
+}
+.imp-tours-landing-container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 18px 18px 60px;
+}
+/* IMP: End Tours Landing */
+/* IMP: Itinerary Block Wrapper */
+.imp-tour-single-body .imp-itinerary{ margin-top: 18px; }
+.imp-tour-single-body .imp-itinerary__heading{ font-size: 16px; font-weight: 800; }
+/* IMP: End Itinerary Block Wrapper */
+/* IMP: Tour Single Modern */
+.imp-tour-page{
+  padding: 30px 0 70px;
+}
+.imp-tour-shell{
+  padding: 0 18px;
+}
+.imp-tour-card{
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.imp-tour-card__media{
+  background: #e9eef3;
+}
+.imp-tour-card__media img{
+  width: 100%;
+  height: auto;
+  display:block;
+}
+.imp-tour-card__body{
+  padding: 18px 18px 22px;
+}
+.imp-tour-title{
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 900;
+  color:#1b2f4a;
+}
+.imp-tour-submeta{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items:center;
+  font-size: 12px;
+  color:#6a7a8a;
+  margin-bottom: 8px;
+}
+.imp-tour-pill{
+  background:#eef4fb;
+  color:#1b4c75;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 11px;
+}
+.imp-tour-excerpt{
+  margin: 0 0 14px;
+  font-size: 12px;
+  color:#4a5b6a;
+}
+.imp-tour-section-title{
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color:#1b2f4a;
+}
+.imp-tour-highlights{ margin-bottom: 14px; }
+.imp-tour-pills{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.imp-pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef4fb;
+  color:#1b4c75;
+  font-size: 11px;
+  font-weight: 700;
+}
+/* Map shortcode container (place [imp_tour_map] where you want) */
+.imp-tour-map-inline{
+  margin: 14px 0 16px;
+}
+.imp-tour-map-inline .imp-tour-map{
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+/* Main two-column area under the image */
+.imp-tour-main{
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap: 26px;
+  align-items:start;
+  margin-top: 12px;
+}
+@media (max-width: 980px){
+  .imp-tour-main{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+.imp-tour-main__right .imp-booking--side{
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+  position: sticky;
+  top: 18px;
+}
+.imp-booking__label{
+  font-size: 11px;
+  color:#6a7a8a;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+.imp-booking__price{
+  display:flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 6px 0 12px;
+}
+.imp-booking__amount{
+  font-size: 24px;
+  font-weight: 900;
+  color:#1b2f4a;
+}
+.imp-booking__per{
+  font-size: 12px;
+  color:#6a7a8a;
+}
+.imp-booking__field label{
+  display:block;
+  font-size: 11px;
+  color:#6a7a8a;
+  margin-bottom: 6px;
+}
+.imp-booking__field input{
+  width: 100%;
+  padding: 10px 10px;
+  border: 1px solid rgba(0,0,0,0.18);
+  border-radius: 8px;
+}
+.imp-booking__cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #f2bf3a;
+  color:#1b2f4a;
+  border-radius: 10px;
+  font-weight: 900;
+  text-decoration:none;
+}
+.imp-booking__note{
+  margin-top: 10px;
+  font-size: 11px;
+  color:#6a7a8a;
+}
+/* IMP: End Tour Single Modern */
+/* IMP: Tour Gallery Slider */
+.imp-tour-gallery{
+  position: relative;
+  overflow: hidden;
+  background: #e9eef3;
+}
+.imp-tour-gallery__track{
+  display:flex;
+  transition: transform .35s ease;
+  will-change: transform;
+}
+.imp-tour-gallery__slide{
+  flex: 0 0 100%;
+  display:flex;
+}
+/* Use a consistent aspect ratio without creating extra empty space */
+.imp-tour-gallery__slide img{
+  width:100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display:block;
+  flex: 1 1 auto;
+}
+/* Arrows */
+.imp-tour-gallery__btn{
+  position:absolute !important;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,0.92);
+  font-size: 22px;
+  line-height: 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  z-index: 3;
+}
+.imp-tour-gallery__prev{ left: 14px; }
+.imp-tour-gallery__next{ right: 14px; }
+/* Hide dots (optional UX) */
+.imp-tour-gallery__dots{
+  display:none !important;
+}
+/* IMP: End Tour Gallery Slider */
+/* IMP: Tours Archive Polish */
+.imp-tours-hero{ padding: 34px 0 10px; }
+.imp-tours-title{
+  margin: 0;
+  text-align:center;
+  font-weight: 900;
+  letter-spacing: .6px;
+}
+.imp-tours-wrap{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px 60px;
+  display:grid;
+  grid-template-columns: 300px 1fr;
+  gap: 28px;
+  align-items:start;
+}
+@media (max-width: 980px){
+  .imp-tours-wrap{ grid-template-columns:1fr; }
+}
+.imp-filter-box{
+  background:#fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(16,24,40,0.05);
+  position: sticky;
+  top: 16px;
+}
+.imp-filter-title{ font-weight: 900; letter-spacing:.3px; }
+.imp-filter-group input[type="date"]{
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+.imp-check{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 8px 8px;
+  border-radius: 10px;
+  transition: background .15s ease;
+}
+.imp-check:hover{ background: rgba(27,79,122,0.06); }
+.imp-btn{ border-radius: 10px; font-weight: 900; }
+.imp-btn.imp-btn--secondary{ width: 100%; margin: 13px 0; }
+.imp-btn--primary{ background:#1b2f4a; color:#fff; border:0; }
+.imp-btn--secondary{ background: transparent; color:#1b2f4a; border:1px solid rgba(27,47,74,0.35); }
+.imp-btn--secondary:hover{ background: rgba(27,47,74,0.06); }
+.imp-btn--yellow{ border-radius: 10px; }
+.imp-tours-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 8px 2px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+}
+.imp-tours-count{ color:#6a7a8a; font-size: 13px; }
+.imp-tours-sort select{
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+.imp-tour-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+@media (max-width: 1100px){ .imp-tour-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px){ .imp-tour-grid{ grid-template-columns: 1fr; } }
+.imp-tour-card{
+  background:#fff;
+  border-radius: 16px;
+  overflow:hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 12px 26px rgba(16,24,40,0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.imp-tour-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px rgba(16,24,40,0.10);
+}
+.imp-tour-card__media{
+  display:block;
+  position:relative;
+  aspect-ratio: 4 / 3;
+  background:#e9eef3;
+}
+.imp-tour-card__media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.imp-badge{
+  position:absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 900;
+  color:#1b2f4a;
+}
+.imp-tour-card__body{ padding: 14px 14px 16px; }
+.imp-tour-meta{ display:flex; gap: 10px; flex-wrap: wrap; font-size: 11px; color:#6a7a8a; margin-bottom: 8px; }
+.imp-tour-meta__item{ font-weight: 700; }
+.imp-tour-title-card{
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 900;
+  color:#1b2f4a;
+}
+.imp-tour-title-card a{ color: inherit; text-decoration:none; }
+.imp-tour-actions{ display:flex; flex-direction:column; gap: 10px; }
+.imp-btn--outline{
+  background: #fff;
+  border: 2px solid #1b2f4a;
+  color:#1b2f4a;
+}
+/* IMP: End Tours Archive Polish */
+/* IMP: Tours Archive Layout Tweaks */
+.imp-tours-archive__layout{
+  grid-template-columns: 280px 1fr !important;
+  gap: 48px !important;
+}
+@media (max-width: 1024px){
+  .imp-tours-archive__layout{
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+.imp-tours-grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+@media (max-width: 1100px){
+  .imp-tours-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 640px){
+  .imp-tours-grid{ grid-template-columns: 1fr !important; }
+}
+/* Make both card buttons equal (size + radius + font) */
+.imp-tour-card-actions a,
+.imp-tour-card-actions .imp-btn{
+  width: 100% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  font-weight: 800 !important;
+  text-decoration:none !important;
+  line-height: 1 !important;
+}
+/* Secondary button should look same size as primary */
+.imp-tour-card-actions a + a{
+  margin-top: 10px !important;
+}
+/* IMP: End Tours Archive Layout Tweaks */
+/* IMP: Tours Archive Layout */
+.imp-tours-page .imp-tours-hero{
+  padding: 34px 0 10px;
+  background: transparent;
+}
+.imp-tours.imp-tours-page .imp-tours-title{
+  text-align:center;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 900;
+  letter-spacing: .5px;
+  color:#1b2f4a;
+  margin: 10px 0 18px;
+}
+.imp-tours.imp-tours-page .imp-tours-wrap{
+  width: min(1280px, 100%) !important;
+  margin: 0 auto !important;
+  padding: 0 18px 60px;
+  display: grid;
+  grid-template-columns: 320px 1fr !important;
+  gap: 46px !important;
+  align-items: start;
+}
+@media (max-width: 1024px){
+  .imp-tours.imp-tours-page .imp-tours-wrap{ grid-template-columns: 1fr; gap: 22px; }
+}
+.imp-tours.imp-tours-page .imp-tours-filters .imp-filter-box{
+  background:#fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 10px 26px rgba(16, 24, 40, 0.06);
+}
+.imp-filter-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom: 14px;
+}
+.imp-filter-title{
+  font-weight: 800;
+  color:#6a7a8a;
+  letter-spacing: .6px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.imp-filter-reset{
+  font-size: 12px;
+  font-weight: 700;
+  color:#1b4c75;
+  text-decoration:none;
+}
+.imp-filter-group label{
+  font-size: 12px;
+  color:#1b2f4a;
+  font-weight: 700;
+}
+.imp-filter-group input[type="date"]{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,0.16);
+  border-radius: 10px;
+  margin-top: 8px;
+  background:#fff;
+}
+.imp-filter-group__head{
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 800;
+  color:#1b2f4a;
+}
+.imp-check{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+  color:#1b2f4a;
+}
+.imp-check input{
+  width: 16px;
+  height: 16px;
+}
+.imp-filter-actions{
+  margin-top: 14px;
+}
+.imp-filter-actions .imp-btn--primary{
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 900;
+}
+/* Toolbar */
+.imp-tours.imp-tours-page .imp-tours-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 6px 0 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.imp-tours-count{
+  font-size: 13px;
+  color:#6a7a8a;
+  font-weight: 700;
+}
+.imp-tours-sort{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.imp-tours-sort label{
+  font-size: 13px;
+  color:#6a7a8a;
+  font-weight: 700;
+}
+.imp-tours-sort select{
+  min-width: 260px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.16);
+  background:#f2f4f7;
+}
+/* Grid */
+.imp-tours.imp-tours-page .imp-tour-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 28px !important;
+  padding-top: 26px;
+}
+@media (max-width: 1200px){
+  .imp-tours.imp-tours-page .imp-tour-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px){
+  .imp-tours.imp-tours-page .imp-tour-grid{ grid-template-columns: 1fr; }
+}
+/* Card */
+.imp-tours.imp-tours-page .imp-tour-card{
+  background:#fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  overflow:hidden;
+  box-shadow: 0 14px 34px rgba(16, 24, 40, 0.06);
+}
+.imp-tour-card__media{
+  position:relative;
+  display:block;
+  background:#e9eef3;
+}
+.imp-tours.imp-tours-page .imp-tour-card__media img{
+  width:100%;
+  height: 260px;
+  object-fit: cover;
+  display:block;
+}
+.imp-tours.imp-tours-page .imp-tour-card__body{
+  padding: 16px 18px 18px;
+}
+.imp-tour-meta{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color:#6a7a8a;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.imp-tour-title-card{
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 900;
+  color:#1b2f4a;
+}
+.imp-tour-title-card a{
+  color:inherit;
+  text-decoration:none;
+}
+.imp-tours.imp-tours-page .imp-tour-actions{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+.imp-tour-actions .imp-btn{
+  text-align:center;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 900;
+}
+.imp-btn--yellow{
+  background:#f2bf3a;
+  color:#1b2f4a;
+  border: 0;
+}
+.imp-btn--outline{
+  border: 2px solid rgba(27,47,74,0.9);
+  color:#1b2f4a;
+  background:#fff;
+}
+/* Pagination */
+.imp-pagination{
+  margin-top: 28px;
+}
+/* IMP: End Tours Archive Layout */
+/* IMP: Tours Archive Breakout + Sidebar fixes */
+main.imp-tours-page{
+  max-width: none !important;
+  width: 100% !important;
+}
+/* Some block themes constrain content size on direct children */
+main.imp-tours-page > *{
+  max-width: none !important;
+}
+/* Ensure wrap can reach 1280px on desktop */
+.imp-tours.imp-tours-page .imp-tours-wrap{
+  max-width: 1280px !important;
+  width: min(1280px, 100%) !important;
+}
+@media (min-width: 1281px){
+  .imp-tours.imp-tours-page .imp-tours-wrap{
+    width: 1280px !important;
+  }
+}
+/* Checkbox alignment (remove odd nudge) */
+.imp-tours.imp-tours-page .imp-check input{
+  transform: none !important;
+  margin-top: 0 !important;
+}
+/* IMP: End Tours Archive Breakout + Sidebar fixes */
+
+
+/* Full-width content when booking sidebar is hidden */
+.imp-tour-main{display:grid;grid-template-columns: 1fr 360px;gap:32px;align-items:start;}
+.imp-tour-main__left{min-width:0;}
+.imp-tour-main__right{position:sticky;top:120px;}
+.imp-tour-main.imp-tour-main--noaside{grid-template-columns: 1fr;}
+.imp-tour-main.imp-tour-main--noaside .imp-tour-main__right{display:none;}
+
+/* Tour gallery: remove bottom bar and dots spacing */
+.imp-tour-gallery__dots{display:none !important;}
+.imp-tour-gallery{margin-bottom:0 !important;background:transparent !important;}
+.imp-tour-gallery__track{margin-bottom:0 !important;}
+.imp-tour-gallery__slide{background:transparent !important;}
+
+
+/* Archive Tour - date input should match primary button shape */
+.imp-tours-page .imp-filter-box input[type="date"],
+.imp-tours-page .imp-filter-box input[type="text"].imp-date-input{
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+}
+
+
+
+/* Remove fixed aspect ratio on single tour gallery and cards */
+.single-tour .imp-tour-gallery__slide img,
+.single-tour .imp-tour-card__media,
+.single-tour .imp-tour-card__media img {
+  aspect-ratio: auto !important;
+  height: auto !important;
+}
+
+
+
+/* ------------------------------------------------------------
+   Premium polish (travel operator vibe)
+   - softer surfaces, better spacing, richer type rhythm
+------------------------------------------------------------ */
+:root{
+  --imp-surface: #ffffff;
+  --imp-bg: #f6f8fb;
+  --imp-border: rgba(17,24,39,.10);
+  --imp-shadow: 0 14px 34px rgba(17,24,39,.08);
+  --imp-shadow-soft: 0 10px 24px rgba(17,24,39,.06);
+  --imp-radius-lg: 18px;
+  --imp-radius-md: 14px;
+}
+
+/* Global subtle background on tour pages */
+body.post-type-archive-tour,
+body.single-tour{
+  background: var(--imp-bg);
+}
+
+/* Better typography rhythm */
+body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1,h2,h3,h4,h5,h6{
+  letter-spacing: -0.01em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Home: Esperienze (flip cards)                                               */
+/* -------------------------------------------------------------------------- */
+
+.imp-exp-grid--flip{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 22px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 1100px){
+  .imp-exp-grid--flip{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px){
+  .imp-exp-grid--flip{ grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+}
+
+@media (max-width: 420px){
+  .imp-exp-grid--flip{ grid-template-columns: 1fr; }
+}
+
+.imp-flip{
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 18px;
+  perspective: 1100px;
+  /* Ensure a stable height even if images load slowly */
+  aspect-ratio: 4 / 5;
+}
+
+.imp-flip__inner{
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  transition: transform .65s cubic-bezier(.2,.8,.2,1);
+  box-shadow: 0 18px 45px rgba(0,0,0,.12);
+}
+
+.imp-flip:hover .imp-flip__inner,
+.imp-flip:focus-visible .imp-flip__inner,
+.imp-flip__inner:hover{
+  transform: rotateY(180deg);
+}
+
+.imp-flip__face{
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.imp-flip__front img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imp-flip__front::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  /*background: linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.08) 55%, rgba(0,0,0,0));*/
+}
+
+.imp-flip__label{
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: .06em;
+  font-size: 14px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.imp-flip__back{
+  transform: rotateY(180deg);
+  background: #0B2A66;
+  color: #fff;
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.imp-flip__title{
+  font-family: var(--imp-font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.imp-flip__text{
+  margin: 0;
+  opacity: .92;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.imp-flip:focus-visible{
+  outline: 3px solid rgba(11,42,102,.35);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .imp-flip__inner{ transition: none; }
+}
+
+/* Archive layout polish */
+.imp-tours-page .imp-tours-hero h1,
+.imp-tours-page .imp-tours-hero .imp-tours-title{
+  letter-spacing: -0.02em;
+}
+.imp-tours-page .imp-tours-wrap{
+  padding-top: 28px;
+  padding-bottom: 48px;
+}
+
+/* Filter box as premium card */
+.imp-tours-page .imp-filter-box{
+  background: var(--imp-surface);
+  border: 1px solid var(--imp-border);
+  border-radius: var(--imp-radius-lg);
+  box-shadow: var(--imp-shadow-soft);
+}
+.imp-tours-page .imp-filter-box .imp-filter-head{
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(17,24,39,.06);
+}
+.imp-tours-page .imp-filter-box input,
+.imp-tours-page .imp-filter-box select{
+  background: #fff;
+  border: 1px solid rgba(17,24,39,.14);
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+.imp-tours-page .imp-filter-box input:focus,
+.imp-tours-page .imp-filter-box select:focus{
+  outline: none;
+  border-color: rgba(17,24,39,.28);
+  box-shadow: 0 0 0 4px rgba(17,24,39,.06);
+}
+
+/* Tour cards: premium surface + hover */
+.imp-tour-card{
+  background: var(--imp-surface);
+  border: 1px solid var(--imp-border);
+  border-radius: var(--imp-radius-lg);
+  box-shadow: var(--imp-shadow-soft);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.imp-tour-card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--imp-shadow);
+  border-color: rgba(17,24,39,.14);
+}
+.imp-tour-card__media img{
+  border-top-left-radius: var(--imp-radius-lg);
+  border-top-right-radius: var(--imp-radius-lg);
+}
+
+/* Title + spacing */
+.imp-tour-title-card{
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+.imp-tour-title-card a{
+  color: #1b2f4a;
+  text-decoration: none;
+}
+.imp-tour-title-card a:hover{
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Buttons: consistent premium treatment */
+.imp-btn{
+  transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+}
+.imp-btn:hover{
+  transform: translateY(-1px);
+}
+.imp-btn:active{
+  transform: translateY(0);
+}
+.imp-btn--yellow{
+  box-shadow: 0 10px 18px rgba(240, 186, 35, .22);
+}
+.imp-btn--yellow:hover{
+  filter: brightness(0.98);
+  box-shadow: 0 14px 26px rgba(240, 186, 35, .28);
+}
+.imp-btn--outline:hover{
+  box-shadow: 0 12px 22px rgba(17,24,39,.08);
+}
+
+/* Single tour: card feel for main container */
+.single-tour .imp-tour-card{
+  border-radius: calc(var(--imp-radius-lg) + 2px);
+}
+.single-tour .imp-tour-card__body{
+  padding-top: 16px;
+}
+
+/* Gallery arrows more premium */
+.single-tour .imp-tour-gallery__arrow{
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(17,24,39,.12);
+  box-shadow: 0 10px 22px rgba(17,24,39,.10);
+  backdrop-filter: blur(6px);
+}
+.single-tour .imp-tour-gallery__arrow:hover{
+  background: rgba(255,255,255,.96);
+}
+
+/* Reduce excessive whitespace under gallery track if any */
+.single-tour .imp-tour-gallery{
+  background: transparent;
+}
+
+
+
+/* v1.5.8.4 - Fix mirrored text during flip */
+.imp-flip__inner { transform-style: preserve-3d; }
+.imp-flip__face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.imp-flip__front { transform: rotateY(0deg); }
+.imp-flip__back { transform: rotateY(180deg); }
+
+
+/* ===== Tours filters sidebar improvements ===== */
+@media (min-width: 1024px){
+  .imp-tours-page .imp-tours-filters{
+    position: sticky;
+    top: 18px;
+    align-self: start;
+  }
+}
+.imp-tours-filters .imp-filter-box{
+  padding: 18px 18px 18px;
+}
+.imp-filter-head{
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+}
+.imp-filter-reset{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+}
+.imp-filter-group{
+  padding: 6px 0 2px;
+}
+.imp-filter-group__head{
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+.imp-check{
+  border-radius: 10px;
+  padding: 9px 8px;
+}
+.imp-check input{
+  flex: 0 0 auto;
+}
+.imp-filter-actions{
+  margin-top: 18px;
+}
+.imp-filter-actions .imp-btn--primary{
+  border-radius: 14px;
+}
+.imp-filter-actions .imp-btn--secondary{
+  border-radius: 14px;
+}
+
+
+/* =========================================================
+   Tours archive UI enhancements (v1.5.8.17)
+   - Accordion filter groups + active highlighting + badges
+   - Compact spacing + aligned checkbox text
+   - Cards: aligned buttons even with long titles
+========================================================= */
+
+/* Card: align action buttons across cards */
+.imp-tours-page .imp-tour-card{display:flex;flex-direction:column;height:100%;}
+.imp-tours-page .imp-tour-card__content{display:flex;flex-direction:column;flex:1;}
+.imp-tours-page .imp-tour-card__buttons{margin-top:auto;display:flex;flex-direction:column;gap:12px;}
+
+/* Filter header badge */
+.imp-tours-page .imp-filter-head{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.imp-tours-page .imp-filter-title-wrap{display:flex;align-items:center;gap:10px;}
+.imp-tours-page .imp-results-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:28px;height:22px;padding:0 8px;border-radius:999px;
+  font-weight:700;font-size:12px;line-height:1;color:#1b2f4a;
+  background:#eef3fb;
+}
+
+/* Group head: requested typography */
+.imp-tours-page .imp-filter-group__head{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-weight:700;
+  font-size:15px;
+  margin:10px 0 6px;
+  color:#1b2f4a;
+  background:transparent;
+  border:0;
+  padding:0;
+  text-align:left;
+  cursor:pointer;
+}
+
+/* Checkbox rows: keep checkbox + text perfectly aligned and compact */
+.imp-tours-page label.imp-check{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:6px 4px;
+  margin:4px 0;
+}
+.imp-tours-page label.imp-check input[type="checkbox"],
+.imp-tours-page label.imp-check input[type="radio"]{
+  margin:0;
+  width:16px;
+  height:16px;
+  flex:0 0 auto;
+}
+.imp-tours-page label.imp-check span{
+  line-height:1.2;
+}
+
+/* Active group emphasis */
+.imp-tours-page .imp-filter-group.is-active .imp-filter-group__head{
+  color:#0e2a47;
+}
+.imp-tours-page .imp-filter-group__meta{
+  display:inline-flex;align-items:center;gap:8px;
+}
+.imp-tours-page .imp-filter-group__count{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:18px;height:18px;padding:0 6px;border-radius:999px;
+  font-weight:700;font-size:11px;line-height:1;
+  color:#1b2f4a;background:#eef3fb;
+}
+.imp-tours-page .imp-filter-group__chev{
+  width:18px;height:18px;display:inline-block;flex:0 0 auto;
+  transform:rotate(0deg);
+  transition:transform .22s ease;
+}
+.imp-tours-page .imp-filter-group.is-collapsed .imp-filter-group__chev{transform:rotate(-90deg);}
+
+/* Accordion panel animation */
+.imp-tours-page .imp-filter-group__panel{
+  overflow:hidden;
+  max-height:1200px;
+  transition:max-height .26s ease;
+}
+.imp-tours-page .imp-filter-group.is-collapsed .imp-filter-group__panel{
+  max-height:0;
+}
+
+/* Compact option spacing + alignment */
+.imp-tours-page .imp-filter-options{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;}
+.imp-tours-page .imp-check{
+  display:flex;align-items:center;gap:10px;
+  margin:0;
+  padding:4px 0;
+  line-height:1.2;
+}
+.imp-tours-page .imp-check input[type="checkbox"]{margin:0;width:16px;height:16px;flex:0 0 auto;}
+.imp-tours-page .imp-check span{display:block;}
+
+/* Active option highlighting */
+.imp-tours-page .imp-check.is-active span{font-weight:600;color:#0e2a47;}
+.imp-tours-page .imp-check.is-active{background:rgba(238,243,251,.65);border-radius:10px;padding:6px 8px;}
+
+/* Show more/less button */
+.imp-tours-page .imp-filter-toggle{
+  margin:8px 0 0;
+  background:transparent;
+  border:0;
+  padding:0;
+  font-weight:600;
+  font-size:13px;
+  color:#1b2f4a;
+  cursor:pointer;
+  text-decoration:underline;
+}
+
+/* Filter actions spacing */
+.imp-tours-page .imp-filter-actions{display:flex;flex-direction:column;gap:12px;margin-top:18px;}
+.imp-tours-page .imp-btn.imp-btn--secondary{width:100%;margin:13px 0;}
+
+
+/* Hide the Gutenberg helper row class on Tour archive/cards (used only in single editor) */
+.imp-tours-page .imp-pillars-row{ display:none; }
+
+
+/* --- Pillars archive bars: prevent overlap --- */
+.imp-tour-pillars--bars .imp-tour-pillar__top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.imp-tour-pillars--bars .imp-tour-pillar__label{
+  flex:1;
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.imp-tour-pillars--bars .imp-tour-pillar__pct{
+  flex:0 0 auto;
+}

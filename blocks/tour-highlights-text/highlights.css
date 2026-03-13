@@ -1,0 +1,25 @@
+.imp-highlights-text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.imp-highlights-text__title{
+  font-weight: 700;
+  margin-right: 8px;
+}
+.imp-highlights-text__chip{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(27,47,74,.18);
+  font-size: 13px;
+  line-height: 1;
+  color: #1b2f4a;
+  background: #fff;
+}
+.imp-highlights-text-block__hint{
+  font-size: 13px;
+  opacity: .75;
+}

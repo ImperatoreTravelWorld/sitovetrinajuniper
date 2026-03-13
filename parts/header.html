@@ -1,0 +1,25 @@
+<!-- wp:group {"className":"imp-header","layout":{"type":"constrained"}} -->
+<div class="wp-block-group imp-header">
+  <!-- wp:group {"className":"imp-container imp-header__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+  <div class="wp-block-group imp-container imp-header__inner">
+    <!-- wp:site-logo {"width":180} /-->
+
+    <!-- wp:shortcode -->
+    [imp_primary_nav menu="primary"]
+    <!-- /wp:shortcode -->
+
+    <!-- wp:html -->
+    <div class="imp-header__actions">
+      <span class="imp-globe" aria-hidden="true">🌐</span>
+      <a class="imp-btn" href="#">Log In</a>
+      <a class="imp-btn imp-btn--primary" href="#">Registrati</a>
+    </div>
+    <!-- /wp:html -->
+  </div>
+  <!-- /wp:group -->
+
+  <!-- wp:html -->
+  <!-- Mega panels are rendered by the [imp_primary_nav] shortcode -->
+  <!-- /wp:html -->
+</div>
+<!-- /wp:group -->

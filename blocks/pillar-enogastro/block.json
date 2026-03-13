@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "imperatore/pillar-enogastro",
+  "title": "Highlight: Esperienze Enogastronomiche (%)",
+  "category": "widgets",
+  "icon": "food",
+  "description": "Mostra l'icona Esperienze Enogastronomiche con percentuale.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "percent": { "type": "number", "default": 60 }
+  },
+  "editorScript": "file:./pillar.js",
+  "style": "file:./pillar.css"
+}

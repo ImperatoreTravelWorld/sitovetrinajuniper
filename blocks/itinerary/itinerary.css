@@ -1,0 +1,102 @@
+/* Block: Itinerario giorno per giorno */
+.imp-itinerary__heading{
+  margin: 0 0 14px;
+  font-size: 18px;
+  color: #1b2f4a;
+}
+
+.imp-itinerary__list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imp-itinerary__card{
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 14px 14px;
+  background: #f7fbff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+}
+
+.imp-itinerary__num{
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #1b4c75;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.imp-itinerary__title{
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: #1b2f4a;
+}
+
+.imp-itinerary__text{
+  font-size: 12px;
+  line-height: 1.55;
+  color: #4a5b6a;
+}
+
+/* Editor styling */
+.imp-itinerary-editor{
+  border: 1px dashed rgba(0,0,0,0.2);
+  padding: 12px;
+  background: #fff;
+}
+.imp-itinerary-editor__head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.imp-itinerary-editor__title{
+  font-weight: 800;
+  color: #1b2f4a;
+}
+.imp-itinerary-editor__empty{
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.75;
+}
+.imp-itinerary-item{
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: #f7fbff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.imp-itinerary-item__num{
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #1b4c75;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  border: 3px solid #f2bf3a;
+}
+.imp-itinerary-item__content{
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+.imp-itinerary-item__actions{
+  margin-top: 8px;
+}
